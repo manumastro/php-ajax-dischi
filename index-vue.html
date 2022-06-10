@@ -14,30 +14,43 @@
   <title>Albums Vue</title>
 </head>
 <body>
-  <header class="d-flex justify-content-between align-items-center">
-    <div id="logo" class="d-flex align-items-center px-4">
-      <a href="#"><i class="fa-brands fa-spotify"></i></a>
-    </div>
-    <div id="select-item" class="d-flex align-items-center px-4">
-      
-    </div>
-  </header>
-
-  <main id="app">
-      <div 
-      class="container d-flex flex-wrap justify-content-between">
-
-        <div
-        v-for="(album, index) in myAlbums" :key="`album-${index}`" 
-        class="album-card d-flex flex-column">
-          <img :src="album.poster" :alt="album.title">
-          <h4 class="pt-3">{{album.title}}</h4>
-          <span class="pt-2">{{album.author}}</span>
-          <span class="year">{{album.year}}</span>
-        </div>
-        
+  <div id="app">
+    <header class="d-flex justify-content-between align-items-center">
+      <div id="logo" class="d-flex align-items-center px-4">
+        <a href="#"><i class="fa-brands fa-spotify"></i></a>
       </div>
-  </main>
+
+      <div id="select-item" class="d-flex align-items-center px-4">
+  
+        <select
+        v-model="genreToSearch" 
+        @change="getApi"
+        class="form-select mt-3">
+          <option value="all">Seleziona un genere</option>
+          <option
+          v-for="(genre, index) in genres" :key="`genre-${index}`" 
+          :value="genre">{{genre}}</option>
+        </select>
+  
+      </div>
+    </header>
+  
+    <main>
+        <div 
+        class="container d-flex flex-wrap">
+  
+          <div
+          v-for="(album, index) in albums" :key="`album-${index}`" 
+          class="album-card d-flex flex-column">
+            <img :src="album.poster" :alt="album.title">
+            <h4 class="pt-3">{{album.title}}</h4>
+            <span class="pt-2">{{album.author}}</span>
+            <span class="year">{{album.year}}</span>
+          </div>
+          
+        </div>
+    </main>
+  </div>
 </body>
-<script src="script.js"></script>
+<script src="js/script.js"></script>
 </html>

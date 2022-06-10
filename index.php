@@ -5,7 +5,7 @@ Questo file lo chiamate index.php. Il “database” dei dischi è meglio che si
 
 
 <?php
-include 'database.php';
+require_once __DIR__ . '/data/database.php';
 //var_dump($albums);
 
 ?>
